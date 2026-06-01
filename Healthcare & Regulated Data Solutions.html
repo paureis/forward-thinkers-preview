@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare &amp; Regulated Data Solutions — Forward Thinkers Consulting</title>
+<link rel="icon" href="assets/mark-teal.jpg">
+<link rel="stylesheet" href="colors_and_type.css">
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.292.0/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--white); -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--teal-50); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--persian-green); outline-offset: 2px; border-radius: 4px; }
+  .ft-mobile-toggle { display: none; }
+
+  /* scroll reveal — visible AT REST; only off-screen-below elements are hidden via JS.
+     This guarantees content is never blank even if a transition is throttled/frozen. */
+  .reveal { transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+  .reveal.is-hidden { opacity: 0; transform: translateY(12px); }
+  .reveal.no-anim { transition: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; }
+    .reveal.is-hidden { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 980px) {
+    .ft-reg-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 900px) {
+    .ft-desktop-nav { display: none !important; }
+    .ft-mobile-toggle { display: inline-flex !important; }
+    .ft-footer-grid { grid-template-columns: 1fr 1fr !important; gap: var(--space-6) !important; }
+  }
+  @media (max-width: 860px) {
+    .ft-pillar-row { grid-template-columns: 1fr !important; gap: var(--space-5) !important; }
+    .ft-pillar-row > div { order: 0 !important; }
+    .ft-contrast-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 560px) {
+    .ft-footer-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="ui.jsx"></script>
+<script type="text/babel" src="Header.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+<script type="text/babel" src="flagship-1.jsx"></script>
+<script type="text/babel" src="flagship-2.jsx"></script>
+<script type="text/babel">
+  const { useEffect } = React;
+  function App() {
+    useEffect(() => {
+      if (window.lucide) window.lucide.createIcons();
+      const els = Array.from(document.querySelectorAll(".reveal"));
+      const isBelowFold = (el) => el.getBoundingClientRect().top > window.innerHeight * 0.88;
+      // Hide ONLY off-screen-below elements; above-the-fold content stays visible at rest.
+      els.forEach((el) => { if (isBelowFold(el)) el.classList.add("is-hidden"); });
+      const show = (el) => el.classList.remove("is-hidden");
+      let io = null;
+      if ("IntersectionObserver" in window) {
+        io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        els.forEach((el) => { if (el.classList.contains("is-hidden")) io.observe(el); });
+      }
+      // Scroll fallback for environments where the observer never fires.
+      const onScroll = () => els.forEach((el) => { if (el.classList.contains("is-hidden") && !isBelowFold(el)) show(el); });
+      window.addEventListener("scroll", onScroll, { passive: true });
+      // Safety net: force-visible WITHOUT a transition so a throttled tab can never stay blank.
+      const t = setTimeout(() => els.forEach((el) => { el.classList.add("no-anim"); el.classList.remove("is-hidden"); }), 800);
+      return () => { if (io) io.disconnect(); window.removeEventListener("scroll", onScroll); clearTimeout(t); };
+    }, []);
+    return (
+      <React.Fragment>
+        <Header />
+        <main>
+          <FlagHero />
+          <WhyDifferent />
+          <CapabilityPillars />
+          <RegulatedApproach />
+          <EngagementTimeline />
+          <EnvironmentsStats />
+          <FlagFAQ />
+          <FlagCTA />
+        </main>
+        <Footer />
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
