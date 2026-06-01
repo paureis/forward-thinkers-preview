@@ -25,7 +25,7 @@ function Flagship() {
               AHCA / CMS environments, moved through HIPAA-conscious pipelines, EDI / X12,
               and healthcare-grade ETL — governed and decision-ready.
             </p>
-            <Button variant="primary" size="lg" href="Healthcare & Regulated Data Solutions.html" iconRight="arrow-right">Explore the practice</Button>
+            <Button variant="primary" size="lg" href="healthcare.html" iconRight="arrow-right">Explore the practice</Button>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
             {features.map((f) => (
@@ -60,7 +60,7 @@ function Results() {
             <h2 className="ft-h2" style={{ color: "#fff", marginTop: 14 }}>Outcomes our clients can put in a board deck.</h2>
             <span style={{ display: "inline-block", marginTop: 14, fontFamily: "var(--font-body)", fontSize: 13, color: "#fff", background: "rgba(255,255,255,0.16)", border: "1px dashed rgba(255,255,255,0.5)", borderRadius: "var(--radius-pill)", padding: "6px 14px" }}>[PLACEHOLDER — pending verified client metrics]</span>
           </div>
-          <Button variant="onDark" href="Case Studies.html" iconRight="arrow-right">Read case studies</Button>
+          <Button variant="onDark" href="case-studies.html" iconRight="arrow-right">Read case studies</Button>
         </div>
         <div className="ft-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "var(--space-6)" }}>
           {slots.map((s) => (
@@ -112,8 +112,8 @@ function CTA() {
               Book a data assessment and we'll map the fastest path from where you are to a governed, decision-grade foundation.
             </p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-              <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Book a data assessment</Button>
-              <Button variant="onDark" size="lg" href="Contact.html">Talk to our team</Button>
+              <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Book a data assessment</Button>
+              <Button variant="onDark" size="lg" href="contact.html">Talk to our team</Button>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ function Hero() {
             organizations modernize fragmented data into a single, compliant, decision-grade foundation.
           </p>
           <div style={{ display: "flex", gap: 14, marginTop: 36, flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Book a data assessment</Button>
+            <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Book a data assessment</Button>
             <Button variant="secondary" size="lg" href="#services">Explore our services</Button>
           </div>
         </div>
@@ -92,7 +92,7 @@ function ServicesGrid() {
               <h3 className="ft-h4" style={{ color: "#fff", marginBottom: 10 }}>Not sure where to start?</h3>
               <p className="ft-small" style={{ color: "rgba(255,255,255,0.72)" }}>A two-week data assessment maps your estate and the fastest path to value.</p>
             </div>
-            <div style={{ marginTop: 20 }}><Button variant="onDark" href="Contact.html" iconRight="arrow-right">Book assessment</Button></div>
+            <div style={{ marginTop: 20 }}><Button variant="onDark" href="contact.html" iconRight="arrow-right">Book assessment</Button></div>
           </div>
         </div>
       </Container>

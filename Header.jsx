@@ -3,23 +3,23 @@ const { useState, useEffect, useRef } = React;
 
 // Per-service detail pages (the SQL Server Performance page is the template).
 const SERVICE_PAGES = [
-  { label: "SQL Server Performance", href: "SQL Server Performance.html" },
-  { label: "ETL Modernization", href: "ETL Modernization.html" },
-  { label: "EDI / X12 Integration", href: "EDI X12 Integration.html" },
-  { label: "AI Data Cleansing", href: "AI Data Cleansing.html" },
-  { label: "Cloud Migration", href: "Cloud Migration.html" },
+  { label: "SQL Server Performance", href: "sql-server-performance.html" },
+  { label: "ETL Modernization", href: "etl-modernization.html" },
+  { label: "EDI / X12 Integration", href: "edi-x12-integration.html" },
+  { label: "AI Data Cleansing", href: "ai-data-cleansing.html" },
+  { label: "Cloud Migration", href: "cloud-migration.html" },
 ];
 
-// Section anchors live on the Homepage. From any other page, prefix with Homepage.html
+// Section anchors live on the Homepage. From any other page, prefix with index.html
 // so the link still resolves; on the Homepage itself use the bare anchor for smooth scroll.
-const onHome = /(^|\/)Homepage\.html$/.test(location.pathname) || /\/$/.test(location.pathname);
-const homeAnchor = (a) => (onHome ? a : "Homepage.html" + a);
+const onHome = /(^|\/)index\.html$/.test(location.pathname) || /\/$/.test(location.pathname);
+const homeAnchor = (a) => (onHome ? a : "index.html" + a);
 
 const NAV = [
-  { label: "Healthcare & Regulated Data", href: "Healthcare & Regulated Data Solutions.html" },
+  { label: "Healthcare & Regulated Data", href: "healthcare.html" },
   { label: "Services", href: homeAnchor("#services"), children: SERVICE_PAGES },
-  { label: "Case Studies", href: "Case Studies.html" },
-  { label: "Team", href: "Team.html" },
+  { label: "Case Studies", href: "case-studies.html" },
+  { label: "Team", href: "team.html" },
 ];
 
 function ServicesDropdown({ item }) {
@@ -83,7 +83,7 @@ function Header() {
       transition: "all var(--dur) var(--ease-out)",
     }}>
       <Container style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 76 }}>
-        <a href={onHome ? "#top" : "Homepage.html"} aria-label="Forward Thinkers Consulting — home" style={{ display: "flex", alignItems: "center" }}><Logo height={30} /></a>
+        <a href={onHome ? "#top" : "index.html"} aria-label="Forward Thinkers Consulting — home" style={{ display: "flex", alignItems: "center" }}><Logo height={30} /></a>
 
         <nav className="ft-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 30 }}>
           {NAV.map((n) => (
@@ -101,7 +101,7 @@ function Header() {
         </nav>
 
         <div className="ft-desktop-nav" style={{ display: "flex", alignItems: "center" }}>
-          <Button variant="primary" href="Contact.html" iconRight="arrow-right">Talk to our team</Button>
+          <Button variant="primary" href="contact.html" iconRight="arrow-right">Talk to our team</Button>
         </div>
 
         <button className="ft-mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu" style={{
@@ -142,7 +142,7 @@ function Header() {
                 }}>{n.label}</a>
               )
             ))}
-            <div style={{ marginTop: 16 }}><Button variant="primary" href="Contact.html" iconRight="arrow-right" style={{ width: "100%", justifyContent: "center" }}>Talk to our team</Button></div>
+            <div style={{ marginTop: 16 }}><Button variant="primary" href="contact.html" iconRight="arrow-right" style={{ width: "100%", justifyContent: "center" }}>Talk to our team</Button></div>
           </Container>
         </div>
       )}

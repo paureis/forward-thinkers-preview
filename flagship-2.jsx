@@ -176,8 +176,8 @@ function FlagCTA() {
             Book a data assessment and we'll map the fastest path to a governed, compliant, decision-grade foundation.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Talk to our team</Button>
-            <Button variant="onDark" size="lg" href="Contact.html">Book a data assessment</Button>
+            <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Talk to our team</Button>
+            <Button variant="onDark" size="lg" href="contact.html">Book a data assessment</Button>
           </div>
         </div>
       </Container>

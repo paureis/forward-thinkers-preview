@@ -167,8 +167,8 @@ function TeamCTA() {
               The people who scope your work are the people who deliver it. Let's talk about what you're trying to achieve.
             </p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-              <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Talk to our team</Button>
-              <Button variant="onDark" size="lg" href="Contact.html">Book a data assessment</Button>
+              <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Talk to our team</Button>
+              <Button variant="onDark" size="lg" href="contact.html">Book a data assessment</Button>
             </div>
           </div>
         </div>

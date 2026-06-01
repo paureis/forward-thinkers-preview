@@ -144,8 +144,8 @@ function CaseCTA() {
               Book a data assessment and we'll map the fastest path to outcomes you can take to the board.
             </p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-              <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Book a data assessment</Button>
-              <Button variant="onDark" size="lg" href="Contact.html">Talk to our team</Button>
+              <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Book a data assessment</Button>
+              <Button variant="onDark" size="lg" href="contact.html">Talk to our team</Button>
             </div>
           </div>
         </div>

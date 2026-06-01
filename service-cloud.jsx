@@ -14,9 +14,9 @@ function ServiceHero() {
     <section id="top" style={{ background: "var(--gray-100)", borderBottom: "1px solid var(--border)", paddingTop: "var(--space-8)", paddingBottom: "var(--space-8)" }}>
       <Container>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 22, fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 12.5, letterSpacing: "0.04em", color: "var(--fg3)" }}>
-          <a href="Homepage.html" style={{ color: "var(--fg3)", textDecoration: "none" }}>Home</a>
+          <a href="index.html" style={{ color: "var(--fg3)", textDecoration: "none" }}>Home</a>
           <Icon name="chevron-right" size={14} />
-          <a href="Homepage.html#services" style={{ color: "var(--fg3)", textDecoration: "none" }}>Services</a>
+          <a href="index.html#services" style={{ color: "var(--fg3)", textDecoration: "none" }}>Services</a>
           <Icon name="chevron-right" size={14} />
           <span style={{ color: "var(--persian-green)" }}>Cloud Migration</span>
         </div>
@@ -25,8 +25,8 @@ function ServiceHero() {
           <h1 className="ft-h1" style={{ marginTop: 16, marginBottom: 0, fontSize: "clamp(36px, 4.4vw, 52px)" }}>{SERVICE.title}</h1>
           <p className="ft-lead" style={{ marginTop: 22, maxWidth: 600 }}>{SERVICE.subhead}</p>
           <div style={{ display: "flex", gap: 14, marginTop: 32, flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Book a data assessment</Button>
-            <Button variant="secondary" size="lg" href="Contact.html">Talk to our team</Button>
+            <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Book a data assessment</Button>
+            <Button variant="secondary" size="lg" href="contact.html">Talk to our team</Button>
           </div>
         </div>
       </Container>
@@ -198,7 +198,7 @@ function RelatedCaseStudy() {
               <p style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 19, color: "var(--gray-400)", margin: 0, maxWidth: 560, lineHeight: 1.35 }}>[PLACEHOLDER — related case study, pending client content]</p>
             </div>
           </div>
-          <Button variant="secondary" href="Case Studies.html" iconRight="arrow-right">View case studies</Button>
+          <Button variant="secondary" href="case-studies.html" iconRight="arrow-right">View case studies</Button>
         </div>
       </Container>
     </section>
@@ -218,8 +218,8 @@ function ServiceCTA() {
               Book a data assessment and we'll map the fastest path to a secure, cost-efficient cloud platform with zero-surprise cutovers.
             </p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-              <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Book a data assessment</Button>
-              <Button variant="onDark" size="lg" href="Contact.html">Talk to our team</Button>
+              <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Book a data assessment</Button>
+              <Button variant="onDark" size="lg" href="contact.html">Talk to our team</Button>
             </div>
           </div>
         </div>

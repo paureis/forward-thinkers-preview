@@ -32,7 +32,7 @@ function FlagHero() {
             ETL, governed and decision-ready.
           </p>
           <div style={{ display: "flex", gap: 14, marginTop: 38, flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" href="Contact.html" iconRight="arrow-right">Talk to our team</Button>
+            <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Talk to our team</Button>
             <Button variant="onDark" size="lg" href="#capabilities">Explore our capabilities</Button>
           </div>
         </div>

@@ -10,10 +10,10 @@ function Footer() {
       { label: "Cloud Migration", href: "#services" },
     ] },
     { h: "Company", items: [
-      { label: "Healthcare & Regulated Data Solutions", href: "Healthcare & Regulated Data Solutions.html" },
-      { label: "Case Studies", href: "Case Studies.html" },
-      { label: "Team", href: "Team.html" },
-      { label: "Contact", href: "Contact.html" },
+      { label: "Healthcare & Regulated Data Solutions", href: "healthcare.html" },
+      { label: "Case Studies", href: "case-studies.html" },
+      { label: "Team", href: "team.html" },
+      { label: "Contact", href: "contact.html" },
     ] },
   ];
   return (
