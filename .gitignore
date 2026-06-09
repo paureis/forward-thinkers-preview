@@ -1,0 +1,8 @@
+# Build/source artifacts from Claude Design exports - not needed live
+*.jsx
+screens/
+README.md
+SKILL.md
+
+# Internal-only - must never go public
+CONTENT-CHECKLIST-print.html
