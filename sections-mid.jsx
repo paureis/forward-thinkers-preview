@@ -42,14 +42,13 @@ function Flagship() {
   );
 }
 
-// ---- RESULTS / STATS BAND (placeholders — awaiting verified client metrics) ----
+// ---- RESULTS / STATS BAND (real, client-supplied figures — June 2026) ----
 function Results() {
-  // Metric slots: category hints only. NO invented numbers — swap in verified data pre-launch.
-  const slots = [
-    "Reporting / query speed-up",
-    "Revenue or cost recovered",
-    "Migration / delivery timeline",
-    "Pipeline reliability",
+  const stats = [
+    { n: "99%", label: "ETL success rate" },
+    { n: "100+", label: "Automated validation rules" },
+    { n: "200+", label: "Enterprise initiatives delivered" },
+    { n: "~4 AM", label: "Reporting data delivered (previously 8\u201310 AM)" },
   ];
   return (
     <section id="results" style={{ background: "var(--persian-green)", padding: "var(--space-8) 0" }}>
@@ -58,15 +57,14 @@ function Results() {
           <div>
             <Eyebrow style={{ color: "rgba(255,255,255,0.7)" }}>Measurable Results</Eyebrow>
             <h2 className="ft-h2" style={{ color: "#fff", marginTop: 14 }}>Outcomes our clients can put in a board deck.</h2>
-            <span style={{ display: "inline-block", marginTop: 14, fontFamily: "var(--font-body)", fontSize: 13, color: "#fff", background: "rgba(255,255,255,0.16)", border: "1px dashed rgba(255,255,255,0.5)", borderRadius: "var(--radius-pill)", padding: "6px 14px" }}>[PLACEHOLDER — pending verified client metrics]</span>
           </div>
           <Button variant="onDark" href="case-studies.html" iconRight="arrow-right">Read case studies</Button>
         </div>
         <div className="ft-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "var(--space-6)" }}>
-          {slots.map((s) => (
-            <div key={s} style={{ borderTop: "2px dashed rgba(255,255,255,0.45)", paddingTop: 18 }}>
-              <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 50, lineHeight: 1, color: "rgba(255,255,255,0.55)", letterSpacing: "-0.01em" }}>&mdash;&mdash;</div>
-              <div style={{ fontFamily: "var(--font-body)", fontSize: 14.5, color: "rgba(255,255,255,0.82)", marginTop: 12, lineHeight: 1.4 }}>{s}<br /><span style={{ fontSize: 12, color: "rgba(255,255,255,0.62)" }}>[pending client metric]</span></div>
+          {stats.map((s) => (
+            <div key={s.label} style={{ borderTop: "2px solid rgba(255,255,255,0.45)", paddingTop: 18 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 50, lineHeight: 1, color: "#fff", letterSpacing: "-0.01em" }}>{s.n}</div>
+              <div style={{ fontFamily: "var(--font-body)", fontSize: 14.5, color: "rgba(255,255,255,0.82)", marginTop: 12, lineHeight: 1.4 }}>{s.label}</div>
             </div>
           ))}
         </div>

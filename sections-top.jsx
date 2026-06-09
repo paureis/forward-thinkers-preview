@@ -1,28 +1,76 @@
 /* global React, Container, Eyebrow, Button, Pill, Icon */
 
-// ---- HERO ----
-function Hero() {
+// ---- HERO (credStyle / backdrop are tweakable from index.html) ----
+const HERO_CREDS = ["200+ Enterprise Initiatives Delivered", "Healthcare & Regulated Data Experts", "SQL Server • ETL • EDI • AI"];
+
+function HeroCreds({ style: credStyle, dark }) {
+  if (credStyle === "chips") {
+    return (
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 40 }}>
+        {HERO_CREDS.map((t) => (
+          <span key={t} style={{
+            fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase",
+            borderRadius: "var(--radius-pill)", padding: "9px 16px",
+            background: dark ? "rgba(255,255,255,0.08)" : "var(--teal-50)",
+            border: dark ? "1px solid rgba(255,255,255,0.25)" : "1px solid transparent",
+            color: dark ? "rgba(255,255,255,0.88)" : "var(--teal-700)",
+          }}>{t}</span>
+        ))}
+      </div>
+    );
+  }
+  if (credStyle === "columns") {
+    return (
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "20px 28px", marginTop: 44, maxWidth: 640 }}>
+        {HERO_CREDS.map((t) => (
+          <div key={t}>
+            <div style={{ width: 28, height: 3, background: dark ? "var(--accent-bright)" : "var(--persian-green)", marginBottom: 12 }}></div>
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 12.5, letterSpacing: "0.08em", textTransform: "uppercase", lineHeight: 1.7, color: dark ? "rgba(255,255,255,0.78)" : "var(--fg3)" }}>{t}</div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  // default: "hairline" divider row
   return (
-    <section id="top" style={{ background: "var(--white)", paddingTop: "var(--space-9)", paddingBottom: "var(--space-9)", position: "relative", overflow: "hidden" }}>
+    <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "12px 18px", marginTop: 44, paddingTop: 24, borderTop: dark ? "1px solid rgba(255,255,255,0.2)" : "1px solid var(--border)" }}>
+      {HERO_CREDS.map((t, i) => (
+        <React.Fragment key={t}>
+          {i > 0 && <span aria-hidden="true" style={{ width: 1, height: 16, background: dark ? "rgba(255,255,255,0.3)" : "var(--border-strong)" }}></span>}
+          <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 12.5, letterSpacing: "0.08em", textTransform: "uppercase", color: dark ? "rgba(255,255,255,0.72)" : "var(--fg3)" }}>{t}</span>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+function Hero({ credStyle = "columns", backdrop = "white" }) {
+  const dark = backdrop === "navy";
+  const bg = dark
+    ? "linear-gradient(150deg, var(--navy-800), var(--japan-indigo) 60%, var(--navy-700))"
+    : backdrop === "tinted" ? "var(--gray-100)" : "var(--white)";
+  return (
+    <section id="top" style={{ background: bg, paddingTop: "var(--space-9)", paddingBottom: "var(--space-9)", position: "relative", overflow: "hidden", borderBottom: backdrop === "tinted" ? "1px solid var(--border)" : "none" }}>
       <Container>
         <div style={{ maxWidth: 760 }}>
-          <Eyebrow>Enterprise Data Transformation</Eyebrow>
-          <h1 className="ft-display" style={{ marginTop: 20, marginBottom: 0 }}>
-            Your data, governed and <span style={{ color: "var(--persian-green)" }}>decision-ready.</span>
+          <Eyebrow onDark={dark}>Healthcare Data, SQL Server &amp; Integration Experts</Eyebrow>
+          <h1 className="ft-display" style={{ marginTop: 20, marginBottom: 0, color: dark ? "#fff" : undefined }}>
+            Your data, governed and <span style={{ color: dark ? "var(--accent-bright)" : "var(--persian-green)" }}>decision-ready.</span>
           </h1>
-          <p className="ft-lead" style={{ marginTop: 26, maxWidth: 600 }}>
-            Forward Thinkers helps enterprise IT and data leaders in healthcare-adjacent
-            organizations modernize fragmented data into a single, compliant, decision-grade foundation.
+          <p className="ft-lead" style={{ marginTop: 26, maxWidth: 600, color: dark ? "rgba(255,255,255,0.78)" : undefined }}>
+            We help healthcare organizations modernize SQL Server, ETL, EDI/X12, analytics,
+            cloud platforms, and AI-powered data quality solutions.
           </p>
           <div style={{ display: "flex", gap: 14, marginTop: 36, flexWrap: "wrap" }}>
-            <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Book a data assessment</Button>
-            <Button variant="secondary" size="lg" href="#services">Explore our services</Button>
+            <Button variant="primary" size="lg" href="contact.html" iconRight="arrow-right">Schedule a Strategy Call</Button>
+            <Button variant={dark ? "onDark" : "secondary"} size="lg" href="case-studies.html">View Case Studies</Button>
           </div>
+          <HeroCreds style={credStyle} dark={dark} />
         </div>
       </Container>
       <img src="assets/mark-teal.jpg" alt="" aria-hidden="true" style={{
         position: "absolute", right: -90, top: 40, width: 420, height: 420, borderRadius: 28,
-        opacity: 0.06, transform: "rotate(-8deg)", pointerEvents: "none",
+        opacity: dark ? 0.12 : 0.06, transform: "rotate(-8deg)", pointerEvents: "none",
       }} className="ft-hero-mark" />
     </section>
   );
@@ -100,4 +148,64 @@ function ServicesGrid() {
   );
 }
 
-Object.assign(window, { Hero, TrustBar, ServicesGrid });
+// ---- FEATURED SUCCESS STORY (real client-supplied case study) ----
+function FeaturedStory() {
+  const highlights = [
+    { icon: "database", t: "Epic Clarity integration" },
+    { icon: "list-checks", t: "100+ validation rules" },
+    { icon: "file-check", t: "AHCA Provider Network Verification compliance" },
+    { icon: "shield-check", t: "HIPAA-conscious audit and security controls" },
+    { icon: "send", t: "Automated file generation and submission workflow" },
+  ];
+  const go = () => { window.location.href = "case-studies.html"; };
+  return (
+    <section id="featured-story" style={{ background: "var(--gray-100)", padding: "var(--space-9) 0", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <Container>
+        <div style={{ maxWidth: 680, marginBottom: "var(--space-7)" }}>
+          <h2 className="ft-h1" style={{ marginTop: 0, marginBottom: 16 }}>Featured Success Story</h2>
+          <p className="ft-lead">Proven healthcare data modernization, compliance automation, and enterprise integration experience.</p>
+        </div>
+        <div role="link" tabIndex={0} aria-label="Read the featured case study"
+          onClick={go}
+          onKeyDown={(e) => { if (e.key === "Enter") go(); }}
+          style={{ background: "var(--white)", border: "1px solid var(--border)", borderTop: "3px solid var(--persian-green)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", overflow: "hidden", cursor: "pointer", transition: "all var(--dur) var(--ease-out)" }}
+          onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-md)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-sm)"; e.currentTarget.style.transform = "translateY(0)"; }}
+        >
+          <div className="ft-fstory-grid" style={{ display: "grid", gridTemplateColumns: "1.45fr 1fr", alignItems: "stretch" }}>
+            {/* Left: narrative */}
+            <div style={{ padding: "var(--space-7)" }}>
+              <Pill variant="teal">Featured Healthcare Project</Pill>
+              <h3 className="ft-h2" style={{ margin: "20px 0 12px" }}>Epic-Powered Provider Network Verification (PNV) Modernization &amp; Compliance Automation</h3>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--persian-green)", marginBottom: 18 }}>Healthcare Payer &bull; AHCA Compliance &bull; Epic Clarity &bull; SQL Server ETL</div>
+              <p className="ft-body" style={{ margin: 0, maxWidth: 560 }}>
+                Replaced a vendor-managed AHCA Provider Network Verification process with an
+                automated Epic Clarity and SQL Server solution featuring ETL, validation rules,
+                audit controls, exception tracking, and secure submission workflows.
+              </p>
+              <div style={{ marginTop: 28 }}>
+                <Button variant="primary" href="case-studies.html" iconRight="arrow-right">Read Case Study</Button>
+              </div>
+            </div>
+            {/* Right: highlights */}
+            <div style={{ background: "var(--teal-50)", borderLeft: "1px solid var(--border)", padding: "var(--space-6) var(--space-6)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--teal-700)", marginBottom: 18 }}>Highlights</div>
+              <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 14 }}>
+                {highlights.map((h) => (
+                  <li key={h.t} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <span style={{ flexShrink: 0, width: 30, height: 30, borderRadius: 8, background: "var(--white)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <Icon name={h.icon} size={16} color="var(--persian-green)" />
+                    </span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: 14.5, lineHeight: 1.5, color: "var(--fg2)", paddingTop: 4 }}>{h.t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+Object.assign(window, { Hero, TrustBar, ServicesGrid, FeaturedStory });
