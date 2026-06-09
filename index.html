@@ -25,6 +25,7 @@
     .ft-stats-grid { grid-template-columns: 1fr 1fr !important; }
     .ft-footer-grid { grid-template-columns: 1fr 1fr !important; gap: var(--space-6) !important; }
     .ft-hero-mark { display: none; }
+    .ft-fstory-grid { grid-template-columns: 1fr !important; }
   }
   @media (max-width: 560px) {
     .ft-services-grid { grid-template-columns: 1fr !important; }
@@ -36,6 +37,7 @@
 <body>
 <div id="root"></div>
 
+<script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" src="ui.jsx"></script>
 <script type="text/babel" src="Header.jsx"></script>
 <script type="text/babel" src="Footer.jsx"></script>
@@ -43,21 +45,53 @@
 <script type="text/babel" src="sections-mid.jsx"></script>
 <script type="text/babel">
   const { useEffect } = React;
+
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "heroBackdrop": "white",
+    "credStyle": "columns",
+    "rhythm": "compact"
+  }/*EDITMODE-END*/;
+
+  const RHYTHM = {
+    compact:  { "--space-8": "48px", "--space-9": "72px",  "--space-10": "96px"  },
+    standard: { "--space-8": "64px", "--space-9": "96px",  "--space-10": "128px" },
+    airy:     { "--space-8": "80px", "--space-9": "120px", "--space-10": "160px" },
+  };
+
   function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
     useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
+    useEffect(() => {
+      const vars = RHYTHM[t.rhythm] || RHYTHM.standard;
+      for (const [k, v] of Object.entries(vars)) document.documentElement.style.setProperty(k, v);
+    }, [t.rhythm]);
     return (
       <React.Fragment>
         <Header />
         <main>
-          <Hero />
+          <Hero credStyle={t.credStyle} backdrop={t.heroBackdrop} />
           <TrustBar />
           <ServicesGrid />
+          <FeaturedStory />
           <Flagship />
           <Results />
           <CaseStudy />
           <CTA />
         </main>
         <Footer />
+        <TweaksPanel>
+          <TweakSection label="Hero" />
+          <TweakRadio label="Backdrop" value={t.heroBackdrop}
+            options={[{ value: "white", label: "White" }, { value: "tinted", label: "Tinted" }, { value: "navy", label: "Navy" }]}
+            onChange={(v) => setTweak("heroBackdrop", v)} />
+          <TweakRadio label="Credentials" value={t.credStyle}
+            options={[{ value: "hairline", label: "Hairline" }, { value: "chips", label: "Chips" }, { value: "columns", label: "Columns" }]}
+            onChange={(v) => setTweak("credStyle", v)} />
+          <TweakSection label="Page" />
+          <TweakRadio label="Rhythm" value={t.rhythm}
+            options={[{ value: "compact", label: "Compact" }, { value: "standard", label: "Standard" }, { value: "airy", label: "Airy" }]}
+            onChange={(v) => setTweak("rhythm", v)} />
+        </TweaksPanel>
       </React.Fragment>
     );
   }
