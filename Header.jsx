@@ -83,7 +83,7 @@ function Header() {
       transition: "all var(--dur) var(--ease-out)",
     }}>
       <Container style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 76 }}>
-        <a href={onHome ? "#top" : "index.html"} aria-label="Forward Thinkers Consulting — home" style={{ display: "flex", alignItems: "center" }}><Logo height={38} /></a>
+        <a href={onHome ? "#top" : "index.html"} aria-label="Forward Thinkers Consulting — home" style={{ display: "flex", alignItems: "center" }}><Logo height={30} /></a>
 
         <nav className="ft-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 30 }}>
           {NAV.map((n) => (

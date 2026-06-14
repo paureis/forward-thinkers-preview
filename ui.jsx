@@ -46,7 +46,7 @@ function Eyebrow({ children, onDark, style = {} }) {
 function Logo({ variant = "indigo", height = 30 }) {
   const src = variant === "white"
     ? "assets/logo-white.png"
-    : "assets/logo-indigo.png";
+    : "assets/logo-wordmark.png";
   return <img src={src} alt="Forward Thinkers Consulting" style={{ height, display: "block" }} />;
 }
 

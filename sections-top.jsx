@@ -53,9 +53,8 @@ function Hero({ credStyle = "columns", backdrop = "white" }) {
     <section id="top" style={{ background: bg, paddingTop: "var(--space-9)", paddingBottom: "var(--space-9)", position: "relative", overflow: "hidden", borderBottom: backdrop === "tinted" ? "1px solid var(--border)" : "none" }}>
       <Container>
         <div style={{ maxWidth: 760 }}>
-          <Eyebrow onDark={dark}>Healthcare Data, SQL Server &amp; Integration Experts</Eyebrow>
-          <h1 className="ft-display" style={{ marginTop: 20, marginBottom: 0, color: dark ? "#fff" : undefined }}>
-            Your data, governed and <span style={{ color: dark ? "var(--accent-bright)" : "var(--persian-green)" }}>decision-ready.</span>
+          <h1 className="ft-display" style={{ marginTop: 0, marginBottom: 0, color: dark ? "#fff" : undefined }}>
+            Healthcare Data, SQL Server &amp; <span style={{ color: dark ? "var(--accent-bright)" : "var(--persian-green)" }}>Integration Experts</span>
           </h1>
           <p className="ft-lead" style={{ marginTop: 26, maxWidth: 600, color: dark ? "rgba(255,255,255,0.78)" : undefined }}>
             We help healthcare organizations modernize SQL Server, ETL, EDI/X12, analytics,
